@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<managers>
+    <manager>
+        <first_name>Владислав</first_name>
+        <last_name>Трансформер</last_name>
+        <email>vladtrans@mail.ru</email>
+        <position>Руководитель IT</position>
+        <salary>200000</salary>
+        <hire_date>2020-01-15</hire_date>
+        <bonus_percent>25</bonus_percent>
+        <team_size>8</team_size>
+    </manager>
+</managers>

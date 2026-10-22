@@ -1,0 +1,18 @@
+[
+    {
+        "first_name": "Егор",
+        "last_name": "Бурмалда",
+        "email": "burmalda@mail.ru",
+        "position": "Разработчик",
+        "salary": 120000,
+        "hire_date": "2022-03-01"
+    },
+    {
+        "first_name": "Михаил",
+        "last_name": "Высунь",
+        "email": "vysun@mail.ru",
+        "position": "Аналитик",
+        "salary": 100000,
+        "hire_date": "2023-06-15"
+    }
+]
