@@ -399,3 +399,84 @@ class Company:
         for department in self.departments:
             print(department.get_info())
 
+def main():
+    company = Company("ЗАО 'Бещёки'")
+
+    employee1 = Employee(
+        "Егор", "Бурмалда", "burmalda@mail.ru",
+        "Разработчик", 120000, date(2022, 3, 1)
+    )
+
+    employee2 = Employee(
+        "Михаил", "Высунь", "vysun@mail.ru",
+        "Аналитик", 100000, date(2023, 6, 15)
+    )
+
+    manager1 = Manager(
+        "Владислав", "Трансформер", "vladtrans@mail.ru",
+        "Руководитель IT", 200000, date(2020, 1, 15),
+        25, 8
+    )
+
+    company.hire_employee(employee1)
+    company.hire_employee(employee2)
+    company.hire_manager(manager1)
+
+    department = Department("D-01", "IT", manager1)
+    department.add_employee(employee1)
+    department.add_employee(employee2)
+    company.add_department(department)
+
+    # Демонстрация полиморфизма
+    people = [employee1, employee2, manager1]
+
+    print("Информация о сотрудниках:")
+    for person in people:
+        print(person.get_info())
+
+    # Демонстрация метода класса
+    print(
+        "\nКоличество созданных людей:",
+        Person.get_people_count()
+    )
+
+    # Демонстрация фабричного метода класса
+    employee_data = {
+        "first_name": "Анна",
+        "last_name": "Погоняло",
+        "email": "podonyalo@mail.ru",
+        "position": "Тестировщик",
+        "salary": 90000,
+        "hire_date": "2024-02-10"
+    }
+
+    employee3 = Employee.from_dict(employee_data)
+    print("\nСоздан через classmethod:")
+    print(employee3.get_info())
+
+    company.show()
+
+    # Сохранение данных
+    company.save_employees_json()
+    company.save_managers_xml()
+
+    print("\nДанные сохранены в JSON и XML.")
+
+    # Проверка загрузки данных
+    company.load_employees_json()
+    company.load_managers_xml()
+
+    print("\nПосле загрузки из файлов:")
+    company.show()
+
+    # Поиск существующего сотрудника
+    print("\nПоиск:", company.find_by_email("burmalda@mail.ru").get_info())
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except CompanyError as error:
+        print("Ошибка программы:", error)
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        print("Ошибка обработки данных:", error)
